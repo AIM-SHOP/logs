@@ -3,13 +3,14 @@
 Journal de ce qui a été fait, décidé et ce qui reste à faire. Les entrées les plus récentes sont en haut.
 
 ## À faire
-- [ ] Remplir la direction artistique (`docs/DA.md`) : couleurs, polices, ton.
+- [ ] Choisir la police exacte des textes de réaction et le rouge précis.
 - [ ] Créer une branche `main` et la définir comme branche par défaut sur GitHub.
 - [ ] Remplacer la vidéo d'exemple `HelloWorld` par la première vraie vidéo.
 
 ## Journal
 
 ### 2026-11-19
+- DA remplie à partir de la description fournie et de 4 captures de « ROB RUN LMARKET BEST CHEAT » (facecam, textes de réaction, rythme, effets, sound design).
 - Création des fichiers `SUIVI.md`, `METHODE.md` et `DA.md`.
 - Projet envoyé sur GitHub, branche `claude/remotion-install-xgam6i`.
 
