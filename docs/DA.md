@@ -18,18 +18,23 @@ Référence à respecter pour toute suggestion de montage ou toute vidéo faite 
   - Sur les moments comiques, elle peut être zoomée ou déformée pour exagérer la réaction.
   - Elle peut se coller au bord gauche ou être recadrée pour laisser de la place au jeu.
 
-## Textes à l'écran
-- **Style « réaction »** : gros texte en MAJUSCULES, police très grasse et condensée (type Impact), **rouge vif** avec un **contour noir épais**.
-  - Exemple : « CHEATINNNNG », en bas au centre, avec des lettres répétées pour l'effet comique.
-- À utiliser ponctuellement, sur un moment fort, jamais en continu.
+## Textes à l'écran (sous-titres)
+- **Pas de sous-titres partout.** Uniquement sur les moments intéressants.
+- **Quand c'est moi qui parle : aucun sous-titre.**
+- Les sous-titres servent à faire ressortir ce que dit **un autre joueur** sur un moment fort (réplique drôle, provocation, phrase clé).
+- **Couleur selon qui parle** :
+  - **Ennemi** → rouge vif.
+  - **Allié** → bleu ou vert.
+- **Style** : gros texte en MAJUSCULES, police très grasse et condensée (type Impact), contour noir épais, en bas au centre.
+  - Exemple : « CHEATINNNNG » (un ennemi qui parle), avec des lettres répétées pour l'effet comique.
 - Ne pas cacher les éléments importants du jeu (personnage, viseur, action en cours).
 
 ## Couleurs
 | Rôle | Couleur |
 |---|---|
-| Texte de réaction | Rouge vif `#E10600` |
+| Sous-titre d'un ennemi | Rouge vif `#E10600` |
+| Sous-titre d'un allié | Bleu `#1E6BFF` ou vert `#19C24A` (à choisir) |
 | Contour des textes | Noir `#000000` |
-| Accent secondaire | Blanc `#FFFFFF` |
 
 Le reste des couleurs vient du jeu : on ne le recolore pas.
 
@@ -56,7 +61,7 @@ Le reste des couleurs vient du jeu : on ne le recolore pas.
 ## Traduction dans Remotion
 - Zooms : `spring()` sur `transform: scale()` pour un effet nerveux mais naturel.
 - Camera shake : petit décalage aléatoire (`random()` de Remotion) sur quelques images seulement.
-- Texte de réaction : apparition en « pop » (`spring()` sur l'échelle), contour noir via `WebkitTextStroke`.
+- Sous-titre (ennemi ou allié) : apparition en « pop » (`spring()` sur l'échelle), contour noir via `WebkitTextStroke`.
 - SFX : `<Audio>` placé à l'image exacte de l'action, volume réglé sous la voix.
 
 ## Objectif final

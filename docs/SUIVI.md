@@ -3,13 +3,15 @@
 Journal de ce qui a été fait, décidé et ce qui reste à faire. Les entrées les plus récentes sont en haut.
 
 ## À faire
-- [ ] Choisir la police exacte des textes de réaction et le rouge précis.
+- [ ] Choisir la police exacte des sous-titres, le rouge précis, et bleu ou vert pour les alliés.
 - [ ] Créer une branche `main` et la définir comme branche par défaut sur GitHub.
 - [ ] Remplacer la vidéo d'exemple `HelloWorld` par la première vraie vidéo.
 
 ## Journal
 
 ### 2026-11-19
+- DA précisée : sous-titres seulement sur les moments intéressants, jamais quand le créateur parle ; rouge = ennemi, bleu ou vert = allié.
+- Ajout de `CLAUDE.md` pour que la DA soit lue automatiquement à chaque session.
 - DA remplie à partir de la description fournie et de 4 captures de « ROB RUN LMARKET BEST CHEAT » (facecam, textes de réaction, rythme, effets, sound design).
 - Création des fichiers `SUIVI.md`, `METHODE.md` et `DA.md`.
 - Projet envoyé sur GitHub, branche `claude/remotion-install-xgam6i`.
