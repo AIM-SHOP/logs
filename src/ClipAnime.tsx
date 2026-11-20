@@ -10,58 +10,58 @@ import {
 
 export const ClipAnime: React.FC = () => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
+  const { fps } = useVideoConfig(); // 30fps
 
   // --- Fade in ---
   const fadeIn = interpolate(frame, [0, 12], [0, 1], {
     extrapolateRight: "clamp",
   });
 
-  // --- Zoom dynamique : léger push-in tout au long ---
+  // --- Zoom dynamique lent ---
   const globalScale = interpolate(frame, [0, 300], [1, 1.06], {
     extrapolateRight: "clamp",
   });
 
-  // --- Camera shake au frame 60 (moment fort simulé) ---
-  const shakeFrames = [60, 61, 62, 63, 64];
-  const isShaking = shakeFrames.includes(frame);
-  const shakeX = isShaking ? (Math.sin(frame * 7.3) * 6) : 0;
-  const shakeY = isShaking ? (Math.cos(frame * 5.1) * 4) : 0;
+  // --- Camera shake au frame 60 (seconde 2) ---
+  const shakeProgress = interpolate(frame, [60, 65], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  const shakeX = shakeProgress > 0 && shakeProgress < 1
+    ? Math.sin(frame * 7.3) * 7 * (1 - shakeProgress)
+    : 0;
+  const shakeY = shakeProgress > 0 && shakeProgress < 1
+    ? Math.cos(frame * 5.1) * 5 * (1 - shakeProgress)
+    : 0;
 
   // --- Flash blanc au frame 60 ---
-  const flash = interpolate(frame, [60, 62, 66], [0, 0.7, 0], {
+  const flash = interpolate(frame, [60, 62, 68], [0, 0.7, 0], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
 
-  // --- Accroche en haut (apparaît dès le début) ---
+  // --- Accroche en haut ---
   const hookScale = spring({
     frame: frame - 5,
     fps,
     config: { damping: 14, stiffness: 200 },
   });
-  const hookOpacity = interpolate(frame, [5, 18], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-  // Disparaît à mi-clip
-  const hookFadeOut = interpolate(frame, [110, 130], [1, 0], {
+  const hookOpacity = interpolate(frame, [5, 18, 110, 130], [0, 1, 1, 0], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
 
-  // --- Sous-titre rouge (ennemi) au moment du flash ---
+  // --- Sous-titre rouge ennemi après le flash ---
   const subScale = spring({
     frame: frame - 58,
     fps,
     config: { damping: 10, stiffness: 220 },
   });
-  const subOpacity = interpolate(frame, [58, 70, 140, 160], [0, 1, 1, 0], {
+  const subOpacity = interpolate(frame, [58, 70, 270, 295], [0, 1, 1, 0], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
 
-  // --- Vignette (bords sombres) ---
   // --- Fade out final ---
   const fadeOut = interpolate(frame, [280, 300], [1, 0], {
     extrapolateLeft: "clamp",
@@ -80,7 +80,10 @@ export const ClipAnime: React.FC = () => {
         }}
       >
         {/* Vidéo source */}
-        <Video src={staticFile("clip-source.mp4")} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        <Video
+          src={staticFile("clip-source.mp4")}
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        />
 
         {/* Vignette sombre sur les bords */}
         <AbsoluteFill
@@ -100,7 +103,7 @@ export const ClipAnime: React.FC = () => {
             right: 0,
             display: "flex",
             justifyContent: "center",
-            opacity: hookOpacity * hookFadeOut,
+            opacity: hookOpacity,
             transform: `scale(${hookScale})`,
           }}
         >
